@@ -30,7 +30,7 @@ def main():
         data = list(map(int, input().split()))
     elif input_type == 'F':
         file_name = input("File: ").strip()
-        file_path = f'convert-array-into-heap-machijs/tests/{file_name}'
+        file_path = f'tests/{file_name}'
         
         with open(file_path, 'r') as file:
             n = int(file.readline())
