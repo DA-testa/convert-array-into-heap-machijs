@@ -1,3 +1,5 @@
+import os
+
 def build_heap(data):
     def sift_down(data, i, swaps):
         min_index = i
@@ -21,10 +23,29 @@ def build_heap(data):
 
     return swaps
 
-
 def main():
-    n = int(input())
-    data = list(map(int, input().split()))
+    while True:
+        input_method = input("I or F: ").upper()
+
+        if input_method == 'I':
+            n = int(input())
+            data = list(map(int, input().split()))
+            break
+
+        elif input_method == 'F':
+            folder_path = "convert-array-into-heap-machijs/tests/"
+            file_name = input("Enter file name: ")
+            file_path = os.path.join(folder_path, file_name)
+            
+            try:
+                with open(file_path, "r") as f:
+                    n = int(f.readline())
+                    data = list(map(int, f.readline().split()))
+                break
+            except FileNotFoundError:
+                print("File not found.")
+        else:
+            print("Invalid input method.")
 
     assert len(data) == n
 
